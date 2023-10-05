@@ -19,7 +19,8 @@ WORKDIR /notebooks
 
 # sets jupyter server configurations
 CMD ["jupyter-notebook", "--NotebookApp.notebook_dir=/notebooks",\
-     "--ip=0.0.0.0", "--port=8888", "--allow-root"]
+     "--ip=0.0.0.0", "--port=8888", "--allow-root",\
+     "--no-browser", "--NotebookApp.token=''"]
 
 
 
