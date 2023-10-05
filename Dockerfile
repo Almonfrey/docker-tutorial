@@ -8,7 +8,8 @@ WORKDIR /tempdir
 ADD . /tempdir
 
 # installs any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt && pip install --upgrade requests
+RUN pip install --upgrade requests && \ 
+    pip install -r requirements.txt
 
 # remove temporary folder
 RUN rm -r /tempdir
