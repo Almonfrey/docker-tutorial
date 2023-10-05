@@ -1,5 +1,5 @@
 # uses an official tensorflow runtime as a base image
-FROM tensorflow/tensorflow:latest-gpu-py3-jupyter AS base
+FROM tensorflow/tensorflow:2.8.0-gpu-jupyter AS base
 
 # sets the working directory to /tempdir
 WORKDIR /tempdir
@@ -8,7 +8,7 @@ WORKDIR /tempdir
 ADD . /tempdir
 
 # installs any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt && rm -r /tempdir
+RUN pip install -r requirements.txt && pip install --upgrade requests
 
 # remove temporary folder
 RUN rm -r /tempdir
@@ -21,8 +21,4 @@ WORKDIR /notebooks
 CMD ["jupyter-notebook", "--NotebookApp.notebook_dir=/notebooks",\
      "--ip=0.0.0.0", "--port=8888", "--allow-root",\
      "--no-browser", "--NotebookApp.token=''"]
-
-
-
-
 
