@@ -17,6 +17,7 @@ RUN rm -r /tempdir
 # when you run the image you will get first into this directory
 WORKDIR /notebooks
 
+# sets jupyter server configurations
 CMD ["jupyter-notebook", "--NotebookApp.notebook_dir=/notebooks",\
      "--ip=0.0.0.0", "--port=8888", "--allow-root"]
 
